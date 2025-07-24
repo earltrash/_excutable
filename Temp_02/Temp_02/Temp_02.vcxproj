@@ -105,12 +105,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\User\Desktop\FrameWork_hwk\E_MK_03\E_MK_03\E_MK_03   </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\E_MK_03\E_MK_03\E_MK_03</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\User\Desktop\FrameWork_hwk\E_MK_03\E_MK_03\E_MK_03\x64\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\E_MK_03\E_MK_03\E_MK_03\x64\Debug</AdditionalLibraryDirectories>
       <AdditionalDependencies>E_MK_03.lib; user32.lib; gdi32.lib; kernel32.lib; ole32.lib; oleaut32.lib; comdlg32.lib; advapi32.lib; d2d1.lib; dwrite.lib; dxgi.lib; d3d11.lib; windowscodecs.lib; %(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>false</GenerateMapFile>
     </Link>
