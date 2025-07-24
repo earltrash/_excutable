@@ -4,27 +4,22 @@
 
 class TitleScene : public  SceneStandard {
 
-//using Provider = std::shared_ptr<IAssetProvider>;
+	//using Provider = std::shared_ptr<IAssetProvider>;
 
 public:
-	TitleScene(SceneInfo index, Provider AssetProvider, const Renderer& renderer) : SceneIndex(index)
+	TitleScene(SceneInfo index, Provider AssetProvider, const Renderer& renderer)
 	{
-		SetAssetProvider(AssetProvider); 
+		SetAssetProvider(AssetProvider);
 		SetRenderer(renderer);
-	}; 
+		SetSceneInfo(index);
+	};
 
 	~TitleScene() = default;
 private:
 
-	void Initalize() override;
+	//void Initalize() override;
 	//void Clean()  override ;
 	void Enter() override;
 	void Exit() override;
-
-	bool UISet();
-	bool AssetMapping();
-
-
-private:
-	SceneInfo SceneIndex; 
+	bool ObjCreate() override;
 };

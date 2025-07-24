@@ -4,10 +4,12 @@
 
 void SceneStandard::Initalize()
 {
-
+	GetAsset(m_SceneIndex);
+	assert(!ObjCreate()); //->m_gameObjects == empty 
+	AssetMapping();
 }
 
-void SceneStandard::Clean() //다형성이 필요해지면 이거 하위에서 구체화 해도 ㄱㅊ
+void SceneStandard::Clean() //다형성이 필요해지면 이거 하위에서 구체화 해도 ㄱㅊClean()
 {
 	std::cout << "정리시작" << std::endl;
 	for (const auto& [name, obj] : m_gameObjects)
@@ -85,5 +87,32 @@ void SceneStandard::Render() //UI 렌더
 	}
 	m_renderer->RenderEnd();
 
+}
+
+void SceneStandard::AssetMapping()
+{
+	for (auto& [name, obj] : m_gameObjects) { //map의 auto 반복문은 이런 구조...
+		for (const auto& asset : SceneAssets) {
+			if (asset.Name == name) { //게임 오브젝트의 이름과 clip_Asset의 Name과 같은 경우 (json parssing)
+				obj->AddClip(asset.Ani_Name, asset.clip); //한 오브젝트의 여러 clip들을 넣어줌. 
+
+				if (asset.Ani_Name == "Idle") //일단 임시로 이렇게 씀. 
+					obj->SetCurrentClip(asset.clip);
+			}
+		}
+	}
+
+	for (const auto& [name, obj] : m_gameObjects) //선택된 파일의 CLIP 주소를 SPRITEANIMATOR에 넣어 줌. & CURSPRITE에다가도, 
+	{
+		SpriteAnimator ap;
+		ap.SetClip(&obj->GetCurrentClip()); //
+		m_curSprites.emplace(obj.get(), ap); //그래서 VECTOR로 관리하는 거고 
+	}
+	return ;
+}
+
+void SceneStandard::SetSceneInfo(SceneInfo info)
+{
+	m_SceneIndex = info;
 }
 

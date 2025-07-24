@@ -33,7 +33,10 @@ protected:
 	void SetAssetProvider(Provider AssetProvider) { m_assetProvider = AssetProvider;}
 	void SetRenderer(const Renderer& renderer) { m_renderer = renderer; }
 	void GetAsset(SceneInfo info) { SceneAssets = m_assetProvider->GetClips(info);}
+	void AssetMapping();
+	void SetSceneInfo(SceneInfo info);
 
+	virtual bool ObjCreate() { return true; };
 protected:
 	Provider m_assetProvider ; //자식은 쓰게 해주자. 굳이 Get으로 넘겨줄 이유는 못 찾겠음.
 	Renderer m_renderer ;
@@ -44,6 +47,8 @@ protected:
 
 
 	bool dirty = false;
+	SceneInfo m_SceneIndex;
+
 };
 
 

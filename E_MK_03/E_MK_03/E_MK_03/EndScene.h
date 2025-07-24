@@ -7,19 +7,19 @@
 class EndScene : public  SceneStandard {
 
 public:
-	EndScene(SceneInfo index, Provider AssetProvider, const Renderer& renderer) : SceneIndex(index)
+	EndScene(SceneInfo index, Provider AssetProvider, const Renderer& renderer)
 	{
 		SetAssetProvider(AssetProvider);
 		SetRenderer(renderer);
+		SetSceneInfo(index);
 	};
 
 
 	~EndScene() = default;
 private:
-	void Initalize() override;
-	void Clean()  override;
 	void Enter() override;
 	void Exit() override;
-private:
-	SceneInfo SceneIndex;
+
+	bool ObjCreate() override;
+
 };
