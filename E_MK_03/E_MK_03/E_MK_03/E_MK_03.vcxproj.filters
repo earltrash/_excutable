@@ -28,29 +28,20 @@
     <Filter Include="Source Files\Utility">
       <UniqueIdentifier>{d99acfba-857a-43a7-824f-e2b50d168465}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GameObject">
-      <UniqueIdentifier>{a2e67a46-5f48-49c2-844f-2fc62f40be54}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\GameObject">
-      <UniqueIdentifier>{3bbb9ceb-a3fb-4b5d-8446-c43303581642}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\GameObject\Button">
-      <UniqueIdentifier>{f2b95610-edb9-4250-a7db-f7e78f12bbc5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Component">
       <UniqueIdentifier>{39439910-0e18-451f-a03d-7afb8fbfb490}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Camera">
       <UniqueIdentifier>{6dabf009-0ded-4861-99ed-54988b4f5c77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Factory">
+      <UniqueIdentifier>{e98b4ec1-c5dc-4af8-956f-9d06c804d454}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interface">
+      <UniqueIdentifier>{3bbb9ceb-a3fb-4b5d-8446-c43303581642}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EndScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AsepriteParser.h">
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
@@ -69,19 +60,7 @@
     <ClInclude Include="IAssetProvider.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="IListener.h">
-      <Filter>Header Files\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseListener.h">
-      <Filter>Header Files\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="IScene.h">
-      <Filter>Header Files\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Header Files\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneInfo.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
@@ -107,33 +86,6 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Header Files\Module</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Dummy.h">
-      <Filter>Header Files\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="UI_Standard.h">
-      <Filter>Header Files\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Flight.h">
-      <Filter>Header Files\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyListener.h">
-      <Filter>Header Files\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files\GameObject\Button</Filter>
     </ClInclude>
     <ClInclude Include="CallbackType.h">
       <Filter>Header Files\Utility</Filter>
@@ -162,21 +114,21 @@
     <ClInclude Include="Camera2D.h">
       <Filter>Header Files\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Collider.h">
-      <Filter>Header Files\Component</Filter>
+    <ClInclude Include="Factory.h">
+      <Filter>Header Files\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneFactory.h">
+      <Filter>Header Files\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Standard.h">
+      <Filter>Header Files\Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PlayScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Core.cpp">
-      <Filter>Source Files\Module</Filter>
-    </ClCompile>
-    <ClCompile Include="E_MK_03.cpp">
       <Filter>Source Files\Module</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
@@ -197,26 +149,11 @@
     <ClCompile Include="AsepriteParser.cpp">
       <Filter>Source Files\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Dummy.cpp">
-      <Filter>Source Files\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="EndScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Source Files\GameObject</Filter>
+      <Filter>Source Files\Interface</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>Header Files\Component</Filter>
@@ -224,8 +161,11 @@
     <ClCompile Include="TMHelper.cpp">
       <Filter>Source Files\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Camera2D.cpp">
-      <Filter>Header Files\Camera</Filter>
+    <ClCompile Include="Factory.cpp">
+      <Filter>Header Files\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Interface</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,6 +1,5 @@
 #pragma once
 #include "pch.h"
-#include "IListener.h"
 #include "Listener.h"
 
 using RawEventCallback = std::function<void(const MSG&)>;

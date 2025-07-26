@@ -1,9 +1,9 @@
 #include "pch.h"
 #include "ResourceManager.h"
 #include <filesystem>
-#include "Sceneinfo.h"
 
 class D2DRenderer;
+using namespace std;
 
 void ResourceManager::AssetLoad(rd renderer, const std::string& directory)
 {
@@ -67,12 +67,12 @@ void ResourceManager::LoadTexture(rd renderer, wsg name, path Path)
 
 }
 
-ComPtr<ID2D1Bitmap1> ResourceManager::GetTexture(const SceneInfo& Info)
+ComPtr<ID2D1Bitmap1> ResourceManager::GetTexture(const string& Info)
 {
     return nullptr;
 }
 
-std::vector<Clip_Asset> ResourceManager::GetClips(const SceneInfo& Info)
+std::vector<Clip_Asset> ResourceManager::GetClips(const string& Info)
 {
     std::vector<Clip_Asset> Out;
 
@@ -130,7 +130,7 @@ void ResourceManager::RegisterClip(const Clip_Asset& asset)
     std::string uniqueKey = asset.Name + "_" + std::to_string(std::hash<std::string>{}(asset.Ani_Name));
     allClipAssets[uniqueKey] = asset;
 
-    for (SceneInfo info : asset.whichScene) {
+    for (std::string info : asset.whichScene) {
         sceneToClipKeys[info].push_back(uniqueKey);
     }
 }

@@ -149,39 +149,27 @@
     <ClInclude Include="AnimationClip.h" />
     <ClInclude Include="AsepriteParser.h" />
     <ClInclude Include="AssetProvider.h" />
-    <ClInclude Include="Button.h" />
     <ClInclude Include="CallbackType.h" />
     <ClInclude Include="Camera2D.h" />
-    <ClInclude Include="Collider.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Dispatcher.h" />
-    <ClInclude Include="Dummy.h" />
-    <ClInclude Include="EndScene.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Flight.h" />
+    <ClInclude Include="Factory.h" />
     <ClInclude Include="KeyListenerComponent.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="MouseListenerComponent.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="IAssetProvider.h" />
-    <ClInclude Include="IListener.h" />
-    <ClInclude Include="KeyListener.h" />
-    <ClInclude Include="MouseListener.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="IScene.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneInfo.h" />
+    <ClInclude Include="SceneFactory.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SimpleMathHelper.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TMHelper.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="UI_Standard.h" />
@@ -189,12 +177,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AsepriteParser.cpp" />
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Core.cpp" />
-    <ClCompile Include="Dummy.cpp" />
-    <ClCompile Include="EndScene.cpp" />
-    <ClCompile Include="E_MK_03.cpp" />
+    <ClCompile Include="Factory.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pch.cpp">
@@ -203,13 +187,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TMHelper.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="WinD.cpp" />

@@ -1,15 +1,9 @@
 #pragma once
 #include "pch.h"
-
-#include "TitleScene.h"
-#include "PlayScene.h"
-#include "EndScene.h"
-
-
-
 #include "Scene.h"
-#include "IScene.h"
 #include "AssetProvider.h"
+#include "Factory.h"
+#include "SceneFactory.h"
 
 using namespace std;
 
@@ -19,36 +13,40 @@ private:
 	~SceneManager() = default;
 public:
 
-	void Initalize(shared_ptr<unordered_map<SceneInfo, shared_ptr<SceneStandard>>> & Scenes) //자료구조는 깔끔한데, 확장성은 떨어지는 거 같아...
+	void Initalize(shared_ptr<unordered_map<string, shared_ptr<SceneStandard>>> & Scenes) //자료구조는 깔끔한데, 확장성은 떨어지는 거 같아...
 	{
-		//이건 좀 줄여야 할 듯. 
-		Scenes->emplace(SceneInfo::Title, make_shared<TitleScene>((SceneInfo::Title), m_assetProvider, m_Renderer));
-		Scenes->emplace(SceneInfo::Stage, make_shared<PlayScene>((SceneInfo::Stage), m_assetProvider, m_Renderer));
-		Scenes->emplace(SceneInfo::End, make_shared<EndScene>((SceneInfo::End), m_assetProvider, m_Renderer));
+	//	SceneStandard(string name, Provider provider, Renderer renderer); //이름이랑 Provider Renderer만 있으면 되니깐 
+		
+		m_Scene_map = make_shared<unordered_map<string, shared_ptr<SceneStandard>>>();
 
-		std::cout << "use count" << m_Renderer.use_count() << std::endl;
+
+		m_Scene_map->emplace("Title", make_shared<SceneStandard>("Title", m_assetProvider, m_Renderer));
+		m_Scene_map->emplace("Stage", make_shared<SceneStandard>("Stage", m_assetProvider, m_Renderer));
+		m_Scene_map->emplace("End", make_shared<SceneStandard>("End", m_assetProvider, m_Renderer));
+		//일단 임시로 이렇게 하고, 나중에 사용되는 Scene 만큼 넘겨주면 됨 
 
 		//최초 Scene은 Title값 -> 
-		m_currentindex = Title;
-		Scene_map = make_shared<unordered_map<SceneInfo, shared_ptr<SceneStandard>>>();
-		Scene_map = Scenes;
-		Scene_map->at(static_cast<SceneInfo>(m_currentindex))->Enter(); //다음은 바로 update니깐 
+		m_currentindex = "Title";
+
+		 Scenes = m_Scene_map;
+
+		m_Scene_map->at(m_currentindex)->Enter(); //다음은 바로 update니깐 
 
 	}
 
 
 	//그럼 얘는 core랑 얘기 되어야 할듯? 
 
-	void ChangeScene(SceneInfo index) { 
+	void ChangeScene(const string& index) { 
 		InputManager::Get().IgnoreNextInput();
 
 		MSG msg;
 		while (PeekMessage(&msg, nullptr, WM_MOUSEFIRST, WM_MOUSELAST, PM_REMOVE)) {}
 
 
-		Scene_map->at(static_cast<SceneInfo>(m_currentindex))->Exit();
+		m_Scene_map->at(m_currentindex)->Exit();
 		m_currentindex = index;
-		Scene_map->at(static_cast<SceneInfo>(m_currentindex))->Enter();
+		m_Scene_map->at(m_currentindex)->Enter();
 	};
 
 	static SceneManager& Get() {
@@ -56,7 +54,7 @@ public:
 		return scenemanager;
 	};
 
-	int GetCurrentIndex() //이게 최저 수준의 소통 수준 
+	string GetCurrentIndex() //이게 최저 수준의 소통 수준 
 	{
 		return m_currentindex;
 	}
@@ -76,7 +74,7 @@ public:
 		m_Renderer.reset();
 		m_assetProvider.reset();
 
-		for (auto& [key, scene] : *Scene_map)
+		for (auto& [key, scene] : *m_Scene_map)
 		{
 			scene->Clean();
 		}
@@ -84,8 +82,9 @@ public:
 
 
 public:
-	SceneInfo m_currentindex;
-	shared_ptr<unordered_map<SceneInfo, shared_ptr<SceneStandard>>> Scene_map = nullptr; //core의 Scene이랑 공유함.
+	string m_currentindex;
+	shared_ptr<unordered_map<string, shared_ptr<SceneStandard>>> m_Scene_map = nullptr; //core의 Scene이랑 공유함.
+
 	std::shared_ptr<IAssetProvider> m_assetProvider;
 	std::shared_ptr<D2DRenderer> m_Renderer;
 };

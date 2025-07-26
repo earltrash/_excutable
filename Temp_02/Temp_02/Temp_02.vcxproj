@@ -136,6 +136,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Temp_02.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\User\Desktop\FrameWork_hwk\E_MK_03\E_MK_03\E_MK_03   </AdditionalIncludeDirectories>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
@@ -145,6 +147,12 @@
     <ProjectReference Include="..\..\E_MK_03\E_MK_03\E_MK_03\E_MK_03.vcxproj">
       <Project>{722c7133-fb87-4047-9913-0a6c31992e52}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="Flight.h" />
+    <ClInclude Include="ObjectFactory.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

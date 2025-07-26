@@ -75,12 +75,11 @@ Clip_Asset AsepriteParser::Load(Filepath& jsonPath)
             if (root.contains("SceneInfo")) {
                 if (root["SceneInfo"].is_array()) {
                     for (const auto& sceneStr : root["SceneInfo"]) {
-                        Asset.whichScene.push_back(ParseSceneInfo(sceneStr));
+                        Asset.whichScene.push_back(sceneStr.get<std::string>());
                     }
                 }
                 else if (root["SceneInfo"].is_string()) {
-                    Asset.whichScene.push_back(ParseSceneInfo(root["SceneInfo"]));
-
+                    Asset.whichScene.push_back(root["SceneInfo"].get<std::string>());
                 }
             }
             Asset.Name = jsonPath.stem().string();
@@ -95,15 +94,6 @@ Clip_Asset AsepriteParser::Load(Filepath& jsonPath)
     return Asset;
 }
 
-SceneInfo AsepriteParser::ParseSceneInfo(std::string Scene_String)
-{
-   
-    if (Scene_String == "Title") return SceneInfo::Title;
-    if (Scene_String == "Stage") return SceneInfo::Stage;
-    if (Scene_String == "End")   return SceneInfo::End;
-
-    return SceneInfo::SCENE_MAX;
-}
 
 
 

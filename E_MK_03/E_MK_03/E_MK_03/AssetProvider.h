@@ -15,11 +15,11 @@ public:
 
 protected:
 
-    ComPtr<ID2D1Bitmap1> GetTexture(const SceneInfo& Info) override {
+    ComPtr<ID2D1Bitmap1> GetTexture(const  std::string& Info) override {
         return m_manager->GetTexture(Info); //stage도 같이 넣을 수 있음. 
     }
 
-    std::vector<Clip_Asset> GetClips(const SceneInfo& Info) override {
+    std::vector<Clip_Asset> GetClips(const std::string& Info) override {
         return m_manager->GetClips(Info);
     }
 

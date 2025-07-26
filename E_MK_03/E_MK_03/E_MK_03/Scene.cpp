@@ -1,11 +1,19 @@
 #include "pch.h"
 #include "Scene.h"
-#include "Camera2D.h"
+#include "SceneFactory.h"
+
+SceneStandard::SceneStandard(string name, Provider provider, Renderer renderer)
+{
+	m_name = name;
+	SetAssetProvider( provider);
+	SetRenderer(  renderer);
+
+}
 
 void SceneStandard::Initalize()
 {
-	GetAsset(m_SceneIndex);
-	assert(!ObjCreate()); //->m_gameObjects == empty 
+	GetAsset(m_name);
+	SceneFactory::Get().InitScene(m_name, *this);
 	AssetMapping();
 }
 
@@ -111,8 +119,5 @@ void SceneStandard::AssetMapping()
 	return ;
 }
 
-void SceneStandard::SetSceneInfo(SceneInfo info)
-{
-	m_SceneIndex = info;
-}
+
 

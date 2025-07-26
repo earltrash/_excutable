@@ -1,10 +1,10 @@
 #pragma once
 #include "pch.h"
-#include "IScene.h"
 #include "AnimationClip.h" 
-#include "Sceneinfo.h"
 #include "AsepriteParser.h"
 #include "Renderer.h"
+
+using namespace std;
 
 using wsg = std::wstring;
 //using path = std::filesystem::path;
@@ -20,7 +20,7 @@ struct Clip_Asset {
     std::string Name;              
     std::string Ani_Name;           
     AnimationClip clip;              
-    std::vector<SceneInfo> whichScene;  
+    std::vector<string> whichScene;
 };
 
 
@@ -35,9 +35,9 @@ public:
     void AssetLoad(rd renderer, const std::string& directory);
     void LoadTexture(rd renderer, wsg name, path path);
 
-    ComPtr<ID2D1Bitmap1> GetTexture(const SceneInfo& Info);  
+    ComPtr<ID2D1Bitmap1> GetTexture(const string& Info);
     void RegisterClip(const Clip_Asset& asset);
-    std::vector<Clip_Asset> GetClips(const SceneInfo& Info);
+    std::vector<Clip_Asset> GetClips(const string& Info);
 
     void Clean();
 
@@ -50,5 +50,5 @@ private:
     //두 번에 걸쳐서 값을 가져옴. Scene -> Name -> Asset 순으로
 
     std::unordered_map<std::string, Clip_Asset> allClipAssets; 
-    std::unordered_map<SceneInfo, std::vector<std::string>> sceneToClipKeys; 
+    std::unordered_map<string, std::vector<std::string>> sceneToClipKeys;
 };

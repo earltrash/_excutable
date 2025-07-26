@@ -1,7 +1,5 @@
 #pragma once
-#include "Sceneinfo.h"
-
-// 예시 입니다. 꼭 이렇게 구현할 필요는 없습니다.
+#include "pch.h"
 struct Frame
 {
     D2D1_RECT_U srcRect;   // 시트에서 잘라낼 영역
@@ -69,34 +67,7 @@ public:
         return m_sceneInfos;
     }
 
-    std::vector<SceneInfo> IntoSceneInfo(std::vector<std::string> parsed) //magic enum 써도 될듯함 
-    {
-        std::vector<SceneInfo> out;
-        for (const auto& ind : parsed)
-        {
-            if (ind == "Title")
-            {
-                out.push_back(SceneInfo::Title);
-                continue;
-            }
-            else if (ind == "Stage")
-            {
-                out.push_back(SceneInfo::Stage);
-                continue;
-
-            }
-            else if (ind == "End")
-            {
-                out.push_back(SceneInfo::End);
-                continue;
-
-            }
-
-            else assert(false);
-        }
-
-        return out;
-    } 
+ 
 
     // 프레임 데이터 조회
     const std::vector<Frame>& GetFrames() const { return m_frames; }

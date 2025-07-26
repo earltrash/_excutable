@@ -43,8 +43,6 @@ protected:
 	AnimationClip m_CurrentClip;
 
 	SIZE size;    
-
-
 	std::vector<std::unique_ptr<Component>> m_Components;
 	Transform m_transform;
 };

@@ -4,14 +4,15 @@
 #include "Scene.h"
 #include "Timer.h"
 #include "Dispatcher.h"
-#include "Dummy.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
 #include "Camera2D.h"
+//#include "AssetProvider.h"
 
 using Microsoft::WRL::ComPtr;
 using namespace std;
 
+class AssetProvider;
 
 class M_Core : public WinD
 {
@@ -27,7 +28,6 @@ public:
 	void Init();
 	bool ComInit();
 	bool ModuleInit(); // 모듈 객체 인스턴스 가져옴 & 초기화 및 할당 ; InputManager
-	// 싱글톤 및 객체들 전달해주거나 처리하는 과정도 필요 
 	/// <summary> Init level : 초기화 및 생성
 	/// <summary> Init level : 초기화 및 생성
 	
@@ -53,8 +53,7 @@ private:
 	int height;
 	std::unique_ptr<GameTimer> m_timer = nullptr; //timer는 app에서만 필요하니, 싱글톤까지는 필요 없음.
 	std::unique_ptr<EventDispatcher> m_tmp_broadcaster = nullptr; 
-	std::unique_ptr<Dummy> m_Dummy = nullptr;
-	std::shared_ptr<unordered_map<SceneInfo, shared_ptr<SceneStandard> > > m_Scene_map = nullptr;
+	std::shared_ptr<unordered_map<string, shared_ptr<SceneStandard> > > m_Scene_map = nullptr;
 	std::shared_ptr<D2DRenderer> m_Renderer = nullptr;
 	std::shared_ptr<ResourceManager> m_resourceManager = nullptr;
 

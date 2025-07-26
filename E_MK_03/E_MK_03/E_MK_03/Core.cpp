@@ -5,7 +5,9 @@
 #include "SceneManager.h"
 #include "ResourceManager.h"
 #include "IAssetProvider.h"
-#include "Sceneinfo.h"
+#include "Factory.h"
+
+
 
 using namespace std;
 
@@ -65,18 +67,18 @@ void M_Core::GameLoop() //event state function render
 
 void M_Core::FixedUpdate() //시간 처리 
 {
-    m_Scene_map->at(static_cast<SceneInfo>(SceneManager::Get().GetCurrentIndex()))->LogicUpdate(m_timer->DeltaTime());
+    m_Scene_map->at(SceneManager::Get().GetCurrentIndex())->LogicUpdate(m_timer->DeltaTime());
 }
 
 void M_Core::Update()
 {
-    m_Scene_map->at(static_cast<SceneInfo>(SceneManager::Get().GetCurrentIndex()))->Update();
+    m_Scene_map->at(SceneManager::Get().GetCurrentIndex())->Update();
 
 }
 
 void M_Core::Render()
 {
-    m_Scene_map->at(static_cast<SceneInfo>(SceneManager::Get().GetCurrentIndex()))->Render();
+    m_Scene_map->at(SceneManager::Get().GetCurrentIndex())->Render();
 
 }
 
@@ -127,7 +129,7 @@ bool M_Core::ModuleInit()
 
 
 
-    m_Scene_map = make_shared<unordered_map<SceneInfo, shared_ptr<SceneStandard>>>();  //Core가 UPdate로 돌려야 하니
+    m_Scene_map = make_shared<unordered_map<string, shared_ptr<SceneStandard>>>();  //Core가 UPdate로 돌려야 하니
     SceneManager::Get().SetRenderer(m_Renderer);
     SceneManager::Get().SetAssetProvider(provider); //SceneManager에 ResourceManager를 참조하는 멤버 넣어줌 
     SceneManager::Get().Initalize(m_Scene_map); //받은 map 멤버로 시작 
@@ -139,6 +141,8 @@ bool M_Core::ModuleInit()
     m_timer->Start();
     return true;
 }
+
+
 
 
 
