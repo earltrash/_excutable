@@ -18,7 +18,7 @@ AnimationClip* Object::GetClip(const std::string& aniName)
 
 Object::~Object()
 {
-	//Delete();
+	m_Components.clear();
 }
 
 void Object::SetCurrentClip(const AnimationClip& clip)
@@ -53,12 +53,22 @@ void Object::SetPosition(POINT position, SIZE size)
 		});
 }
 
+void Object::ComponentClear() { //소멸자로 이거 옮기자 
+
+	m_Components.clear();
+
+}
+
 void Object::Delete()
 {
-	m_clips.clear();
-	ComponentClear<MouseListenerComponent, KeyListenerComponent>();
+	ComponentClear();
 }
 
  Transform& Object::GetTransform()  {
 	return m_transform;
 }
+
+ SpriteRenderer& Object::GetSpriteRenderer()
+ {
+	 return m_spriterenderer;
+ }

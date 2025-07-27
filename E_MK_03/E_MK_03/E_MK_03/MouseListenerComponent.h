@@ -8,16 +8,17 @@ class MouseListenerComponent : public ListenerComponent //새로운 shared-raw-shar
 {
 public:
 	explicit MouseListenerComponent(Callback cb) : callback(std::move(cb)) {}
-	~MouseListenerComponent() = default;
+	~MouseListenerComponent(){InputManager::Get().m_broadcaster->RemoveListener(this);} //Raii
 
 	void _OnEvent(const MSG& msg) override {
 
 		if (callback) callback(msg);
 	};
-	bool Matches(const MSG& msg)const {
+
+	bool Matches(const MSG& msg)const {// 관심 있는 메시지만 받게
 		return msg.message >= WM_MOUSEFIRST && msg.message <= WM_MOUSELAST;
 
-	};  // 관심 있는 메시지만 받게
+	};  
 private:
 	Callback callback;
 };

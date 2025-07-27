@@ -39,7 +39,6 @@ bool InputManager::MsgCheck(MSG& msg)
     case WM_RBUTTONUP:
         if (!m_ignoreNextInput)
         {
-
             m_broadcaster->Broadcast(msg);
         }
         m_ignoreNextInput = false;

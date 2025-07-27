@@ -64,7 +64,7 @@ Clip_Asset AsepriteParser::Load(Filepath& jsonPath)
         for (const auto& t : root["meta"]["frameTags"])
         {
             Tag tag;
-            Asset.Ani_Name = t["name"];
+            Asset.Ani_Name = t["name"]; //idle 
             tag.m_from = t["from"];
             tag.m_to = t["to"];
             tag.m_direction = t["direction"];

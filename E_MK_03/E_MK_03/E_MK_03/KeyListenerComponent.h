@@ -8,8 +8,9 @@ class KeyListenerComponent : public ListenerComponent
 {
 public:
 	explicit KeyListenerComponent(Callback cb) : callback(std::move(cb)) {}
-	~KeyListenerComponent() = default;
+	~KeyListenerComponent() { InputManager::Get().m_broadcaster->RemoveListener(this); } //Raii
 
+	
 	void _OnEvent(const MSG& msg) override {
 		if (callback) callback(msg);
 		return;

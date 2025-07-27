@@ -154,7 +154,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Dispatcher.h" />
-    <ClInclude Include="Factory.h" />
+    <ClInclude Include="ObjFactory.h" />
     <ClInclude Include="KeyListenerComponent.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="MouseListenerComponent.h" />
@@ -169,6 +169,7 @@
     <ClInclude Include="SceneFactory.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SimpleMathHelper.h" />
+    <ClInclude Include="SpriteRenderer.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TMHelper.h" />
     <ClInclude Include="Transform.h" />
@@ -178,7 +179,7 @@
   <ItemGroup>
     <ClCompile Include="AsepriteParser.cpp" />
     <ClCompile Include="Core.cpp" />
-    <ClCompile Include="Factory.cpp" />
+    <ClCompile Include="ObjFactory.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="pch.cpp">
@@ -190,6 +191,7 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SpriteRenderer.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TMHelper.cpp" />
     <ClCompile Include="Transform.cpp" />

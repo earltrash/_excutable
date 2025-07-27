@@ -2,7 +2,7 @@
 #include "pch.h"
 #include "Scene.h"
 #include "AssetProvider.h"
-#include "Factory.h"
+#include "ObjFactory.h"
 #include "SceneFactory.h"
 
 using namespace std;
@@ -15,7 +15,6 @@ public:
 
 	void Initalize(shared_ptr<unordered_map<string, shared_ptr<SceneStandard>>> & Scenes) //자료구조는 깔끔한데, 확장성은 떨어지는 거 같아...
 	{
-	//	SceneStandard(string name, Provider provider, Renderer renderer); //이름이랑 Provider Renderer만 있으면 되니깐 
 		
 		m_Scene_map = make_shared<unordered_map<string, shared_ptr<SceneStandard>>>();
 
@@ -23,9 +22,7 @@ public:
 		m_Scene_map->emplace("Title", make_shared<SceneStandard>("Title", m_assetProvider, m_Renderer));
 		m_Scene_map->emplace("Stage", make_shared<SceneStandard>("Stage", m_assetProvider, m_Renderer));
 		m_Scene_map->emplace("End", make_shared<SceneStandard>("End", m_assetProvider, m_Renderer));
-		//일단 임시로 이렇게 하고, 나중에 사용되는 Scene 만큼 넘겨주면 됨 
 
-		//최초 Scene은 Title값 -> 
 		m_currentindex = "Title";
 
 		 Scenes = m_Scene_map;
@@ -41,7 +38,7 @@ public:
 		InputManager::Get().IgnoreNextInput();
 
 		MSG msg;
-		while (PeekMessage(&msg, nullptr, WM_MOUSEFIRST, WM_MOUSELAST, PM_REMOVE)) {}
+		while (PeekMessage(&msg, nullptr, WM_MOUSEFIRST, WM_MOUSELAST, PM_REMOVE)) {} //기존에 있는 msg 정리하기 
 
 
 		m_Scene_map->at(m_currentindex)->Exit();

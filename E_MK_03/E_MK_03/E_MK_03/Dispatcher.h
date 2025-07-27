@@ -19,24 +19,28 @@ public:
     }
 
     void RemoveListener(ListenerComponent* listener) {
+
         /*listeners.erase(std::remove_if(listeners.begin(), listeners.end(),
             [listener](ListenerComponent* ptr) {
                 return ptr == listener;
             }),
             listeners.end());*/
-        m_pendingRemove.push_back(listener);
+        m_pendingRemove.emplace(listener);
     }// 객체로 관리하니, 이런식으로 관리도 편하게 할 수 있음, 한 번에 하나만 하자.
 
     void Broadcast(const MSG& msg) {
 
-        auto snapshot = listeners;
+        for (size_t i = 0; i < listeners.size(); ++i) {
+            ListenerComponent* l = listeners[i];
 
-        for (auto& l : listeners) {
-            if (l == nullptr) continue;
+            if (!l) continue;
 
-            if (l->Matches(msg)) {
+            if (std::find(m_pendingRemove.begin(), m_pendingRemove.end(), l) != m_pendingRemove.end())
+                continue;
+
+            // 3. 실제 살아있는 리스너만 메시지 처리
+            if (l->Matches(msg))
                 l->_OnEvent(msg);
-            }
         }
 
         for (auto& ptr : m_pendingRemove) {
@@ -68,5 +72,5 @@ public:
 public:
 
     std::vector<ListenerComponent*> listeners;
-    std::vector<ListenerComponent*> m_pendingRemove; //use - after -free 방지
+    std::unordered_set<ListenerComponent*> m_pendingRemove; //use - after -free 방지
 };

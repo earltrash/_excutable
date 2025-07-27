@@ -22,7 +22,7 @@ Button::~Button() //모든 컴포넌트를 지울건데
 	
 }
 
-void Button::Worked(const MSG& msg)
+void Button::Worked(const MSG& msg) //지금은 클릭만 하지만, 나중에는 마우스 커서 올리면 스프라이트 변경하는 코드도 추가 가능 
 {
     if (InputManager::Get().IsInCallback()) return;
 

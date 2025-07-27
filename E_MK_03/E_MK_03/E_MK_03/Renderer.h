@@ -10,7 +10,7 @@ using namespace Microsoft::WRL;
     public:
         D2DRenderer() = default;
 
-        ~D2DRenderer() { Uninitialize(); }
+        ~D2DRenderer() = default;
 
         void Initialize(HWND hwnd);
 

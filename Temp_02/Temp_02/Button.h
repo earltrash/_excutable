@@ -12,7 +12,6 @@ class Button : public UI_Standard
 {
 public:
 	Button(RECT bounds, Callback cb);
-	//생성자에서 GetComponent해서 dispatcher를 컴포넌트로 가져오기! 
 	~Button();
 
 public:

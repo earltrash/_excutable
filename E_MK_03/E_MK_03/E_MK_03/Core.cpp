@@ -5,7 +5,7 @@
 #include "SceneManager.h"
 #include "ResourceManager.h"
 #include "IAssetProvider.h"
-#include "Factory.h"
+#include "ObjFactory.h"
 
 
 
@@ -84,13 +84,15 @@ void M_Core::Render()
 
 void M_Core::End()
 {
+    if (m_Renderer) //이유는 모르겠다만 명시적으로 호출해줘야 leak 안 나옴. 
+        m_Renderer->Uninitialize();
+
     ModuleClean();
     
 }
 
 void M_Core::ModuleClean()
 {
-
     SceneManager::Get().Clean();
     InputManager::Get().Clean();
     m_resourceManager->Clean();
@@ -122,9 +124,7 @@ bool M_Core::ModuleInit()
     }
 
     m_resourceManager = make_unique<ResourceManager>();
-    //m_resourceManager->AssetLoad(m_Renderer , m_resourceManager->GetAbsoluteResourcePathA() );
-     m_resourceManager->AssetLoad(m_Renderer ,"Resource");
-
+    m_resourceManager->AssetLoad(m_Renderer ,"Resource");
     auto provider = std::make_shared<AssetProvider>(m_resourceManager);
 
 
@@ -136,7 +136,6 @@ bool M_Core::ModuleInit()
 
 
 
-    //m_Dummy = make_unique<Dummy>(); //예시
     m_timer = make_unique<GameTimer>();
     m_timer->Start();
     return true;

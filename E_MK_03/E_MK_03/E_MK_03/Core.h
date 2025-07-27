@@ -51,6 +51,8 @@ public:
 private:
 	int width;
 	int height;
+
+
 	std::unique_ptr<GameTimer> m_timer = nullptr; //timer는 app에서만 필요하니, 싱글톤까지는 필요 없음.
 	std::unique_ptr<EventDispatcher> m_tmp_broadcaster = nullptr; 
 	std::shared_ptr<unordered_map<string, shared_ptr<SceneStandard> > > m_Scene_map = nullptr;

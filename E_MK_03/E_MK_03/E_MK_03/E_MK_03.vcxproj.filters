@@ -114,7 +114,7 @@
     <ClInclude Include="Camera2D.h">
       <Filter>Header Files\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Factory.h">
+    <ClInclude Include="ObjFactory.h">
       <Filter>Header Files\Factory</Filter>
     </ClInclude>
     <ClInclude Include="SceneFactory.h">
@@ -125,6 +125,9 @@
     </ClInclude>
     <ClInclude Include="UI_Standard.h">
       <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteRenderer.h">
+      <Filter>Header Files\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -161,11 +164,14 @@
     <ClCompile Include="TMHelper.cpp">
       <Filter>Source Files\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Factory.cpp">
+    <ClCompile Include="ObjFactory.cpp">
       <Filter>Header Files\Factory</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>Header Files\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

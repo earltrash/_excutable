@@ -3,7 +3,7 @@
 #include "Object.h"
 #include "Scene.h"
 
-class ObjFactory {
+class ObjFactory { //¾ê´Â ±×³É 
 
     using ObjectCreator = std::function<std::unique_ptr<Object>()>;
     using SceneCreator = std::function<std::shared_ptr<SceneStandard>()>;
@@ -18,15 +18,8 @@ public:
         return fac;
     }
 
-
-
     void RegisterObject(const std::string& name, ObjectCreator func) {
         m_objectCreators[name] = std::move(func);
-    }
-
-
-    void RegisterScene(const std::string& name, SceneCreator func) {
-        m_SceneCreators[name] = std::move(func);
     }
 
 
@@ -40,15 +33,8 @@ public:
         return it->second();
     }
 
-
-    std::shared_ptr<SceneStandard> CreateScene(const std::string& name) {
-        return m_SceneCreators.at(name)();
-    }
-
-
 public:
     std::unordered_map<std::string, ObjectCreator> m_objectCreators;
-    std::unordered_map<std::string, SceneCreator> m_SceneCreators;
 
 
 };

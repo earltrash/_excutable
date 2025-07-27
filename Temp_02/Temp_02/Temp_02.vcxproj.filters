@@ -26,7 +26,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ObjectFactory.h">
+    <ClInclude Include="Factory.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
