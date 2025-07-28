@@ -123,11 +123,17 @@
     <ClInclude Include="Object.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="UI_Standard.h">
+    <ClInclude Include="MSG_Reciver.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
     <ClInclude Include="SpriteRenderer.h">
       <Filter>Header Files\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files\Module</Filter>
+    </ClInclude>
+    <ClInclude Include="Status.h">
+      <Filter>Header Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

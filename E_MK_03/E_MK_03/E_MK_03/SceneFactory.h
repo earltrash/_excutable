@@ -47,8 +47,6 @@ public:
 				});
 
 
-
-
 		m_sceneInitializers.emplace("Stage", [](SceneStandard& scene) {
 			auto obj = ObjFactory::Get().CreateObject("Player");
 			scene.m_gameObjects.emplace("Player", std::move(obj));

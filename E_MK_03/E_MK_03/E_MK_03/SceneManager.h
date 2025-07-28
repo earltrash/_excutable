@@ -35,8 +35,7 @@ public:
 	//그럼 얘는 core랑 얘기 되어야 할듯? 
 
 	void ChangeScene(const string& index) { 
-		InputManager::Get().IgnoreNextInput();
-
+		
 		MSG msg;
 		while (PeekMessage(&msg, nullptr, WM_MOUSEFIRST, WM_MOUSELAST, PM_REMOVE)) {} //기존에 있는 msg 정리하기 
 

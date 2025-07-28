@@ -154,6 +154,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Dispatcher.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="ObjFactory.h" />
     <ClInclude Include="KeyListenerComponent.h" />
     <ClInclude Include="Listener.h" />
@@ -170,10 +171,11 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SimpleMathHelper.h" />
     <ClInclude Include="SpriteRenderer.h" />
+    <ClInclude Include="Status.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TMHelper.h" />
     <ClInclude Include="Transform.h" />
-    <ClInclude Include="UI_Standard.h" />
+    <ClInclude Include="MSG_Reciver.h" />
     <ClInclude Include="WinD.h" />
   </ItemGroup>
   <ItemGroup>

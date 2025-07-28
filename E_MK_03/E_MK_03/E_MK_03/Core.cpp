@@ -17,7 +17,7 @@ void M_Core::Init()
     const wchar_t* className = L"MK_00";
     const wchar_t* windowName = L"Do_Flight";
 
-    HRESULT hr = __super::Create(className, windowName, 1600, 800); 
+    HRESULT hr = __super::Create(className, windowName, 1920, 1080); 
     assert(SUCCEEDED(hr));
 
     hr = ComInit(); // Com °´Ã¼ »ý¼º 

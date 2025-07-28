@@ -27,6 +27,7 @@ public: //다 열어주는 거 맘에 안 들긴 하는데, core랑 manager에서 쓸려면 어쩔 수 
 	virtual void Update();
 	virtual void LogicUpdate(float delta);
 	virtual void Enter() { Initalize(); };
+
 	virtual void Exit() { Clean(); }; //하위 클래스에서 처리 
 	virtual void Render();
 

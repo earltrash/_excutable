@@ -5,12 +5,27 @@ LRESULT NzWndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
 	switch (msg) //기본적인 wnd event처리만 하게 함. msg->Input처리는 RUN에서 직접 이루어짐(확장성 땜에) 
 	{
+	case WM_SIZING:
+	{
+		RECT* rect = (RECT*)lparam;
+
+		const int Width = 1920;
+		const int Height = 1080;
+
+		rect->right = rect->left + Width;
+		rect->bottom = rect->top + Height;
+
+		break;
+	}
+	
+
 	case WM_DESTROY:
 		std::cout << "WM_DESTROY received, exiting..." << std::endl;
 		PostQuitMessage(0);
 		break;
 
-		default:
+
+	default:
 		return::DefWindowProc(hwnd, msg , wparam, lparam);
 	}//switch
 

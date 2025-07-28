@@ -42,24 +42,15 @@ void SceneStandard::LogicUpdate(float delta)
 
 }
 
+using Vec2F = MYHelper::Vector2F;
 
 void SceneStandard::Render() //UI 렌더
 {
 	assert(m_renderer);
-
-	MAT3X2F cameraTM = UnityCamera::GetCamera().GetViewMatrix(); //매번 업데이트가 되니깐 
-	MAT3X2F renderTM = MYTM::MakeRenderMatrix(true); // 카메라 위치 렌더링 매트릭스
-	MAT3X2F finalTM = renderTM * cameraTM;
-
 	m_renderer->RenderBegin();
 	
-	m_renderer->SetTransform(finalTM);
 	for (const auto& [Name, obj] : m_gameObjects)
 	{
-		D2D1::Matrix3x2F worldTM = obj->GetTransform().GetWorldMatrix();
-		D2D1::Matrix3x2F finalTM = renderTM * worldTM * cameraTM;
-		m_renderer->SetTransform(finalTM);
-
 		const Frame& frame = obj->GetSpriteRenderer().GetCurrentFrame();
 		const auto& srcU = frame.srcRect;
 
@@ -70,14 +61,15 @@ void SceneStandard::Render() //UI 렌더
 			static_cast<float>(srcU.bottom)
 		);
 
+		const Vec2F& pos = obj->GetTransform().GetPosition(); // 오브젝트의 위치를 가져온다고 가정
+
 		D2D1_RECT_F destRect = {
-			0.f,
-			0.f,
-			static_cast<float>(srcU.right - srcU.left),
-			static_cast<float>(srcU.bottom - srcU.top)
+			pos.x,
+			pos.y,
+			pos.x + static_cast<float>(srcU.right - srcU.left),
+			pos.y + static_cast<float>(srcU.bottom - srcU.top)
 		};
 
-		m_renderer->SetTransform(finalTM); // Object 위치
 		m_renderer->DrawBitmap(obj->GetSpriteRenderer().GetCurrentClip().GetBitmap(), destRect, srcRect, 1);
 	}
 	m_renderer->RenderEnd();
