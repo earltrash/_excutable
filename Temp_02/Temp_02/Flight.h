@@ -8,7 +8,7 @@ class Flight : public Object
 public:
 	Flight(RECT bounds) { //ADD COMPONENT <TRANSFORM> ui는 따로 관리 할게. 
 
-		SetPosition({ bounds.left, bounds.top }, { bounds.right - bounds.left, bounds.top - bounds.bottom });
+		SetPosition({ bounds.left, bounds.top });
 
 	};
 	~Flight() {};

@@ -33,9 +33,9 @@ AnimationClip& Object::GetCurrentClip()
 
 
 
-void Object::SetPosition(POINT position, SIZE size) //결국 size-> frame width-
+void Object::SetPosition(POINT position) //결국 size-> frame width-
 {	//오브젝트에 따라서 어느 좌표계 기준으로 생성할지 정하는 것도 나쁘지 않을 듯 
-	this->size = size; // Collider에서 size쓰면 되겠다. 
+	
 
 	GetTransform().SetPosition({
 		static_cast<float>(position.x),

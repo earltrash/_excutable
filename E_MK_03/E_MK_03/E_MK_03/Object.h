@@ -28,7 +28,7 @@ public:
 	 SpriteRenderer& GetSpriteRenderer();
 
 	
-	 void SetPosition(POINT position, SIZE size); //position 값은 update를 통해서 바뀌어야 하겠지 
+	 void SetPosition(POINT position); //position 값은 update를 통해서 바뀌어야 하겠지 
 	 void Delete(); //소유한 컴포넌트를 지우는 함수, 고정적이긴 하다만, 혹여나 모르니!
 
 
@@ -50,9 +50,10 @@ protected:
 	SIZE size;  
 
 	std::vector<std::unique_ptr<Component>> m_Components;
+
 	Transform m_transform;
 	SpriteRenderer m_spriterenderer; 
-
+	bool activated = false;
 };
 
 

@@ -38,6 +38,7 @@ bool WinD::Create(const wchar_t* className, const wchar_t* windowName, int width
 	wc.cbSize = sizeof(WNDCLASSEX);
 	wc.lpszClassName = className;
 	wc.lpfnWndProc = NzWndProc; //프로시저 등록 
+	wc.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS; // ← 여기 스타일 추가
 
 
 	ATOM classId = 0;

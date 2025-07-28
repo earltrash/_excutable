@@ -29,6 +29,7 @@ bool InputManager::MsgCheck(MSG& msg)
     case WM_LBUTTONDOWN:
     case WM_LBUTTONUP:
     case WM_RBUTTONDOWN:
+
     case WM_RBUTTONUP:
        
         

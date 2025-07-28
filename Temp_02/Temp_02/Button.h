@@ -21,6 +21,6 @@ public:
 private:
 	RECT m_bounds; //얘는 클릭 바운드가 필요하긴 하니깐, 플레이어도 동일하지 않나?
 	Callback m_callback;
-	
+	list<Object> m_list;
 };
 

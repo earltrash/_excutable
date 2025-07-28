@@ -10,6 +10,7 @@
 #include <map>
 #include <algorithm>
 #include <unordered_set>
+#include <list>
 //D2D 라이브러리 및 헤더 
 #pragma region D2D
 #pragma comment(lib, "d2d1.lib")     // D2D1CreateFactory

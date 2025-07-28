@@ -10,7 +10,7 @@ Player::Player(RECT bounds) : Flight(bounds)
 		this->AddComponent<KeyListenerComponent>([this](const MSG& msg) {
 			this->Move(msg); }));
 
-	SetPosition({ bounds.left, bounds.top }, { bounds.right - bounds.left, bounds.top - bounds.bottom });
+	SetPosition({ bounds.left, bounds.top });
 
 }
 
