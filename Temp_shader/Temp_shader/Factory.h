@@ -14,28 +14,28 @@ void ObjectRegister()
 {
     ObjFactory::Get().RegisterObject("temp_0001", []() 
         {
-        auto startButton =  
+        auto temp_0001 =
          std::make_unique<Button>(
-            RECT{ 600, 300, 1000, 500 },
+            RECT{ 0 , 0, 1000000   , 600 },
             [](const MSG& msg) {
             });
-        return startButton;
+        return temp_0001;
         }
     );
 
 
-    ObjFactory::Get().RegisterObject("Start1", []()
-        {
-            auto startButton =
-                std::make_unique<Button>(
-                    RECT{ 600, 300, 1000, 500 },
-                    [](const MSG& msg) {
-                        SceneManager::Get().ChangeScene("Stage");
-                    });
-            startButton->SetEnabled(false);
-            return startButton;
-        }
-    );
+    //ObjFactory::Get().RegisterObject("Start", []()
+    //    {
+    //        auto startButton =
+    //            std::make_unique<Button>(
+    //                RECT{ 600, 300, 1000, 500 },
+    //                [](const MSG& msg) {
+    //                    SceneManager::Get().ChangeScene("Stage");
+    //                });
+    //        startButton->SetEnabled(false);
+    //        return startButton;
+    //    }
+    //);
 
 
     ObjFactory::Get().RegisterObject("Exit", []() {

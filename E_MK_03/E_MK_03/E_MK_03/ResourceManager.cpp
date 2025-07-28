@@ -47,7 +47,7 @@ void ResourceManager::LoadTexture(rd renderer, wsg name, path Path)
         std::wcout << "렌더러 없음" << std::endl;
 
 
-    Clip_Asset clips = ap.Load(Path); // json 파싱은 string 기반
+    std::vector<Clip_Asset> clips = ap.Load(Path); // json 파싱은 string 기반
     std::filesystem::path imagePath = Path; // ← wstring 기반 path
     imagePath.replace_extension(L".png");
 
@@ -62,9 +62,11 @@ void ResourceManager::LoadTexture(rd renderer, wsg name, path Path)
     renderer->CreateBitmapFromFile(imagePath.c_str(), newBitmap.GetAddressOf());
     m_textures[name] = newBitmap;
 
-    clips.clip.SetBitmap(newBitmap);
-    RegisterClip(clips); //각 Scene마다 이렇게 하긴 함. 
-
+    // 각 클립에 비트맵 설정하고 등록
+    for (auto& clip : clips) {
+        clip.clip.SetBitmap(newBitmap);
+        RegisterClip(clip); // 각 애니메이션별로 등록
+    }
 }
 
 ComPtr<ID2D1Bitmap1> ResourceManager::GetTexture(const string& Info)

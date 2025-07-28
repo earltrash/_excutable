@@ -14,6 +14,7 @@ public:
     AsepriteParser() = default;
     ~AsepriteParser() = default;
 public:
-    Clip_Asset Load(Filepath& jsonPath);
+    //Clip_Asset Load(Filepath& jsonPath);
+    std::vector<Clip_Asset> Load(Filepath& jsonPath);
 };
 

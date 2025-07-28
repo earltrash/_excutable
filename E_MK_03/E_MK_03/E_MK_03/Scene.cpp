@@ -85,16 +85,39 @@ void SceneStandard::Render() //UI 렌더
 
 void SceneStandard::AssetMapping()
 {
-	for (auto& [name, obj] : m_gameObjects) { //map의 auto 반복문은 이런 구조...
+	//for (auto& [name, obj] : m_gameObjects) { //map의 auto 반복문은 이런 구조...
+	//	for (const auto& asset : SceneAssets) {
+	//		if (asset.Name == name) { 
+	//			obj->GetSpriteRenderer().AddClip(asset.Ani_Name, asset.clip);
+	//			if (asset.Ani_Name == "Idle") 
+	//				obj->GetSpriteRenderer().SetCurrentClip(&asset.clip); 
+	//		}
+	//	}
+	//}
+	
+
+	for (auto& [name, obj] : m_gameObjects) {
+		bool hasIdleClip = false;
+		AnimationClip* idleClip = nullptr;
+
 		for (const auto& asset : SceneAssets) {
-			if (asset.Name == name) { 
+			if (asset.Name == name) {
+				// 각 애니메이션 클립을 개별적으로 추가
 				obj->GetSpriteRenderer().AddClip(asset.Ani_Name, asset.clip);
-				if (asset.Ani_Name == "Idle") 
-					obj->GetSpriteRenderer().SetCurrentClip(&asset.clip); 
+
+				// Idle 클립 찾기
+				if (asset.Ani_Name == "Idle") {
+					hasIdleClip = true;
+					idleClip = const_cast<AnimationClip*>(&asset.clip);
+				}
 			}
 		}
+
+		// Idle 클립이 있으면 기본 클립으로 설정
+		if (hasIdleClip && idleClip) {
+			obj->GetSpriteRenderer().SetCurrentClip(idleClip);
+		}
 	}
-	
 
 
 	return;

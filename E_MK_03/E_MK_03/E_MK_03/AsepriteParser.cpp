@@ -11,26 +11,27 @@
 
 using Filepath = std::filesystem::path;
 
-Clip_Asset AsepriteParser::Load(Filepath& jsonPath)
+std::vector<Clip_Asset> AsepriteParser::Load(Filepath& jsonPath)
 {
     std::ifstream ifs(jsonPath);
     Frame fd;
-    Clip_Asset Asset; 
+    std::vector<Clip_Asset> assets; // 여러 클립을 담을 벡터
 
     if (!ifs.is_open())
         std::cerr << "파일을 열 수 없습니다.\n";
 
     std::string content((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
-    auto parsed = nlohmann::json::parse(content, nullptr, false);  // 마지막 인자 'false'는 예외 비활성화
+    auto parsed = nlohmann::json::parse(content, nullptr, false);
 
     if (parsed.is_discarded())
         std::cerr << "JSON 파싱 실패: 유효하지 않은 문서입니다.\n";
 
     const auto& root = parsed;
-    //std::string sceneInfo = root.value("SceneInfo", "Unknown");
 
-
+    // 전체 프레임 먼저 파싱
+    std::vector<Frame> allFrames;
     auto& framesNode = root["frames"];
+
     if (framesNode.is_object())
     {
         for (auto it = framesNode.begin(); it != framesNode.end(); ++it)
@@ -41,7 +42,7 @@ Clip_Asset AsepriteParser::Load(Filepath& jsonPath)
             fd.srcRect.right = f["frame"]["x"].get<UINT32>() + f["frame"]["w"].get<UINT32>();
             fd.srcRect.bottom = f["frame"]["y"].get<UINT32>() + f["frame"]["h"].get<UINT32>();
             fd.duration = f["duration"];
-            Asset.clip.AddFrame(fd);
+            allFrames.push_back(fd);
         }
     }
     else if (framesNode.is_array())
@@ -53,47 +54,54 @@ Clip_Asset AsepriteParser::Load(Filepath& jsonPath)
             fd.srcRect.right = f["frame"]["x"].get<UINT32>() + f["frame"]["w"].get<UINT32>();
             fd.srcRect.bottom = f["frame"]["y"].get<UINT32>() + f["frame"]["h"].get<UINT32>();
             fd.duration = f["duration"];
-            Asset.clip.AddFrame(fd);
+            allFrames.push_back(fd);
         }
     }
 
+    // Scene 정보 파싱
+    std::vector<std::string> sceneInfo;
+    if (root.contains("SceneInfo")) {
+        if (root["SceneInfo"].is_array()) {
+            for (const auto& sceneStr : root["SceneInfo"]) {
+                sceneInfo.push_back(sceneStr.get<std::string>());
+            }
+        }
+        else if (root["SceneInfo"].is_string()) {
+            sceneInfo.push_back(root["SceneInfo"].get<std::string>());
+        }
+    }
+
+    // 각 태그별로 별도의 Clip_Asset 생성
     if (root["meta"].contains("frameTags"))
     {
-        std::vector<Frame> allFrames = Asset.clip.GetFrames(); // 기존 clip에서 가져온 전체 프레임 목록
-
         for (const auto& t : root["meta"]["frameTags"])
         {
+            Clip_Asset asset; // 각 태그마다 새로운 Asset 생성
+
+            asset.Name = jsonPath.stem().string(); // 파일명
+            asset.Ani_Name = t["name"]; // "Idle", "Walk", "Run" 등
+            asset.whichScene = sceneInfo; // Scene 정보 복사
+
             Tag tag;
-            Asset.Ani_Name = t["name"]; //idle 
             tag.m_from = t["from"];
             tag.m_to = t["to"];
             tag.m_direction = t["direction"];
 
+            asset.clip.AddTag(tag);
 
-
-            std::string sceneInfo;
-            if (root.contains("SceneInfo")) {
-                if (root["SceneInfo"].is_array()) {
-                    for (const auto& sceneStr : root["SceneInfo"]) {
-                        Asset.whichScene.push_back(sceneStr.get<std::string>());
-                    }
-                }
-                else if (root["SceneInfo"].is_string()) {
-                    Asset.whichScene.push_back(root["SceneInfo"].get<std::string>());
+            // 해당 태그 범위의 프레임만 추가
+            for (int i = tag.m_from; i <= tag.m_to; ++i) {
+                if (i < allFrames.size()) {
+                    asset.clip.AddFrame(allFrames[i]);
                 }
             }
-            Asset.Name = jsonPath.stem().string();
-            Asset.clip.AddTag(tag);
-           
 
-            for (int i = tag.m_from; i <= tag.m_to; ++i)
-                Asset.clip.AddFrame(allFrames[i]);      
+            assets.push_back(asset); // 벡터에 추가
         }
     }
 
-    return Asset;
+    return assets;
 }
-
 
 
 

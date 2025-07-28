@@ -1,7 +1,7 @@
 {
     "frames": [
         {
-            "filename": "temp_0001 0.",
+            "filename": "temp_0001 0.png",
             "frame": {
                 "x": 0,
                 "y": 0,
@@ -23,7 +23,7 @@
             "duration": 100
         },
         {
-            "filename": "temp_0001 1.",
+            "filename": "temp_0001 1.png",
             "frame": {
                 "x": 550,
                 "y": 0,
@@ -45,7 +45,7 @@
             "duration": 100
         },
         {
-            "filename": "temp_0001 2.",
+            "filename": "temp_0001 2.png",
             "frame": {
                 "x": 1100,
                 "y": 0,
@@ -67,7 +67,7 @@
             "duration": 100
         },
         {
-            "filename": "temp_0001 3.",
+            "filename": "temp_0001 3.png",
             "frame": {
                 "x": 1650,
                 "y": 0,
@@ -89,7 +89,7 @@
             "duration": 100
         },
         {
-            "filename": "temp_0001 4.",
+            "filename": "temp_0001 4.png",
             "frame": {
                 "x": 2200,
                 "y": 0,
@@ -111,7 +111,7 @@
             "duration": 100
         },
         {
-            "filename": "temp_0001 5.",
+            "filename": "temp_0001 5.png",
             "frame": {
                 "x": 2750,
                 "y": 0,
@@ -133,7 +133,7 @@
             "duration": 100
         },
         {
-            "filename": "temp_0001 6.",
+            "filename": "temp_0001 6.png",
             "frame": {
                 "x": 3300,
                 "y": 0,
@@ -155,7 +155,7 @@
             "duration": 100
         },
         {
-            "filename": "temp_0001 7.",
+            "filename": "temp_0001 7.png",
             "frame": {
                 "x": 3850,
                 "y": 0,
@@ -189,57 +189,51 @@
         "scale": "1",
         "frameTags": [
             {
-                "name": "Idle",
+                "name": "i1",
                 "from": 0,
                 "to": 0,
                 "direction": "forward",
                 "color": "#000000ff"
             },
             {
-                "name": "Idle",
+                "name": "i2",
                 "from": 1,
                 "to": 1,
                 "direction": "forward",
                 "color": "#000000ff"
             },
             {
-                "name": "Idle",
+                "name": "i3",
                 "from": 2,
                 "to": 2,
                 "direction": "forward",
                 "color": "#000000ff"
             },
             {
-                "name": "Idle",
+                "name": "i4",
                 "from": 3,
                 "to": 3,
                 "direction": "forward",
                 "color": "#000000ff"
             },
             {
-                "name": "Idle",
+                "name": "i5",
                 "from": 4,
                 "to": 4,
                 "direction": "forward",
                 "color": "#000000ff"
             },
             {
-                "name": "Idle",
+                "name": "i6",
                 "from": 5,
                 "to": 5,
                 "direction": "forward",
                 "color": "#000000ff"
             },
+
             {
                 "name": "Idle",
                 "from": 6,
-                "to": 6,
-                "direction": "forward",
-                "color": "#000000ff"
-            },
-            {
-                "name": "Idle",
-                "from": 7,
                 "to": 7,
                 "direction": "forward",
                 "color": "#000000ff"
