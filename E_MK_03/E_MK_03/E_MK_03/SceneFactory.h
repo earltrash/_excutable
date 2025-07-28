@@ -38,12 +38,8 @@ public:
 			m_sceneInitializers.emplace("Title", [](SceneStandard& scene)
 				{
 
-			auto obj = ObjFactory::Get().CreateObject("Start");
-			scene.m_gameObjects.emplace("Start", std::move(obj));
-
-			obj = ObjFactory::Get().CreateObject("Exit");
-			scene.m_gameObjects.emplace("Exit", std::move(obj));
-
+			auto obj = ObjFactory::Get().CreateObject("temp_0001");
+			scene.m_gameObjects.emplace("temp_0001", std::move(obj));
 				});
 
 
