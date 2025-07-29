@@ -11,7 +11,6 @@ Item::Item(fundamentalStatus stat, string name, string desc,
 	InputManager::Get().m_broadcaster->AddListener(
 		this->AddComponent<MouseListenerComponent>([this](const MSG& msg) {
 			this->Worked(msg); }));
-	//비활성화 켜버려야 겠다. //이거 킨 애들은 그냥 return 때려버리는 거로 랜더랑 연산이랑 transform 접근도 못하게 할 거임. ㅇㅇ 
 }
 
 

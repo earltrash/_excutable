@@ -10,5 +10,5 @@ protected:
 
 protected:
 	virtual void Worked(const MSG& msg) {};
-	bool activated = false;
+	
 };

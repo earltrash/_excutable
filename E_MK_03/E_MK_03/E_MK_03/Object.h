@@ -44,11 +44,11 @@ protected:
 
 protected:
 
+
+	list<Object> m_list; 
 	std::unordered_map<std::string, AnimationClip> m_clips; //애니메이션 이름이랑 clip 정보
 	AnimationClip m_CurrentClip;
-
 	SIZE size;  
-
 	std::vector<std::unique_ptr<Component>> m_Components;
 
 	Transform m_transform;
