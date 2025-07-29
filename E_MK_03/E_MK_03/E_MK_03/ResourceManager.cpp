@@ -132,6 +132,8 @@ void ResourceManager::RegisterClip(const Clip_Asset& asset)
     std::string uniqueKey = asset.Name + "_" + std::to_string(std::hash<std::string>{}(asset.Ani_Name));
     allClipAssets[uniqueKey] = asset;
 
+    std::cout << "유니크키" << uniqueKey << std::endl;
+
     for (std::string info : asset.whichScene) {
         sceneToClipKeys[info].push_back(uniqueKey);
     }

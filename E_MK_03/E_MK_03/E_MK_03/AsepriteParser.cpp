@@ -100,6 +100,12 @@ std::vector<Clip_Asset> AsepriteParser::Load(Filepath& jsonPath)
         }
     }
 
+    
+    for (const auto& asset : assets )
+    {
+        std::cout << "폴더명: " << asset.Name << " | 애니메이션이름: " << asset.Ani_Name << " " << std::endl;
+    }
+
     return assets;
 }
 

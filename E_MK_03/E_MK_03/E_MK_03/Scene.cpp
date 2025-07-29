@@ -85,17 +85,6 @@ void SceneStandard::Render() //UI 렌더
 
 void SceneStandard::AssetMapping()
 {
-	//for (auto& [name, obj] : m_gameObjects) { //map의 auto 반복문은 이런 구조...
-	//	for (const auto& asset : SceneAssets) {
-	//		if (asset.Name == name) { 
-	//			obj->GetSpriteRenderer().AddClip(asset.Ani_Name, asset.clip);
-	//			if (asset.Ani_Name == "Idle") 
-	//				obj->GetSpriteRenderer().SetCurrentClip(&asset.clip); 
-	//		}
-	//	}
-	//}
-	
-
 	for (auto& [name, obj] : m_gameObjects) {
 		bool hasIdleClip = false;
 		AnimationClip* idleClip = nullptr;
@@ -110,6 +99,9 @@ void SceneStandard::AssetMapping()
 					hasIdleClip = true;
 					idleClip = const_cast<AnimationClip*>(&asset.clip);
 				}
+
+
+
 			}
 		}
 

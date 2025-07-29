@@ -16,7 +16,7 @@ void ObjectRegister()
         {
         auto temp_0001 =
          std::make_unique<Button>(
-            RECT{ 0 , 0, 1000000   , 600 },
+            RECT{ 0 , 0, 1000, 600 },
             [](const MSG& msg) {
             });
         return temp_0001;
