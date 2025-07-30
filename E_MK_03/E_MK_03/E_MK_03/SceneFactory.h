@@ -61,6 +61,4 @@ public:
 
 public:
 	std::map<string, SceneInitFunction> m_sceneInitializers; //Scene Init에 필요한 함수를 보관 key로 받음
-
-
 };

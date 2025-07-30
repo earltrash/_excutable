@@ -160,6 +160,11 @@ namespace D2DTM
             return m_pivot;
         }
 
+        // 경계 검사 | 아이템 슬롯 체크용으로 생각중.
+        bool Contains(const Vec2& point) const;
+
+        // 렌더링 사각형 가져오기
+        D2D1_RECT_F GetRect() const;
     private:
         void SetDirty()
         {

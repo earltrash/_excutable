@@ -7,6 +7,7 @@
 #include "IAssetProvider.h"
 #include "ObjFactory.h"
 
+#include "BitmapManager.h"
 
 
 using namespace std;
@@ -22,14 +23,13 @@ void M_Core::Init()
 
     hr = ComInit(); // Com 객체 생성 
     assert(SUCCEEDED(hr));
-
+     
     hr = ModuleInit();     // 매니저의 초기화를 이 단계에서 실행 : 리소스 load & 모듈 멤버 초기화 및 생성
     assert(SUCCEEDED(hr));
 
     //etc
 
     std::cout << "Init 성공적" << std::endl; 
-   
 }
 
 
@@ -78,8 +78,16 @@ void M_Core::Update()
 
 void M_Core::Render()
 {
-    m_Scene_map->at(SceneManager::Get().GetCurrentIndex())->Render();
+    m_Renderer->RenderBegin(); 
 
+    m_Scene_map->at(SceneManager::Get().GetCurrentIndex())->Render();  // 이건 transform 포함된 월드 렌더링
+    // ui 있는 경우. 
+    if (m_inventoryManager)
+    {
+        m_inventoryManager->RenderInventory(m_Renderer->GetD2DContext()); // UI는 identity 기준으로 렌더됨
+    }
+
+    m_Renderer->RenderEnd();
 }
 
 void M_Core::End()
@@ -138,6 +146,28 @@ bool M_Core::ModuleInit()
 
     m_timer = make_unique<GameTimer>();
     m_timer->Start();
+
+    auto ctx = m_Renderer.get()->GetD2DContext();
+    if (!ctx) {
+        std::cout << "ctx == nullptr (Renderer 초기화 안됨)" << std::endl;
+        assert(false);
+    }
+    if (!m_Renderer) {
+        std::cout << " m_Renderer 자체가 nullptr" << std::endl;
+        assert(false);
+    }
+    ID2D1DeviceContext7* d2dContext = m_Renderer.get()->GetD2DContext();
+    if (d2dContext == nullptr) {
+        std::cout << "ERROR: D2D Context가 nullptr 입니다! D2DRenderer::CreateRenderTargets() 실패 가능성." << std::endl;
+        assert(false);
+        return false; // 더 이상 진행할 수 없음을 알림
+    }
+    // BitmapManager 사용을 위해서
+    InitializeWIC();
+    
+    // GameInventoryManager 생성 후 초기화
+    m_inventoryManager = make_shared<GameInventoryManager>();
+    m_inventoryManager->Initialize(m_Renderer.get()->GetD2DContext());
     return true;
 }
 

@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Interface">
       <UniqueIdentifier>{3bbb9ceb-a3fb-4b5d-8446-c43303581642}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UITest">
+      <UniqueIdentifier>{05baf0e1-7b02-4e4b-987b-d3d8a2ea2259}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsepriteParser.h">
@@ -129,6 +132,21 @@
     <ClInclude Include="SpriteRenderer.h">
       <Filter>Header Files\Component</Filter>
     </ClInclude>
+    <ClInclude Include="BitmapManager.h">
+      <Filter>Header Files\UITest</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInventoryManager.h">
+      <Filter>Header Files\UITest</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Header Files\UITest</Filter>
+    </ClInclude>
+    <ClInclude Include="UIUtility.h">
+      <Filter>Header Files\UITest</Filter>
+    </ClInclude>
+    <ClInclude Include="IUIWindow.h">
+      <Filter>Header Files\UITest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -172,6 +190,9 @@
     </ClCompile>
     <ClCompile Include="SpriteRenderer.cpp">
       <Filter>Header Files\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="BitmapManager.cpp">
+      <Filter>Header Files\UITest</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

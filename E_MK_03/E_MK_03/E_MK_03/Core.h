@@ -9,6 +9,9 @@
 #include "Camera2D.h"
 //#include "AssetProvider.h"
 
+#include "BitmapManager.h"
+#include "GameInventoryManager.h"
+
 using Microsoft::WRL::ComPtr;
 using namespace std;
 
@@ -59,4 +62,5 @@ private:
 	std::shared_ptr<D2DRenderer> m_Renderer = nullptr;
 	std::shared_ptr<ResourceManager> m_resourceManager = nullptr;
 
+	std::shared_ptr<GameInventoryManager> m_inventoryManager = nullptr;
 };

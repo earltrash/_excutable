@@ -48,6 +48,10 @@ using namespace Microsoft::WRL;
 
         ID2D1Bitmap1** GetBitmap() { return m_targetBitmap.GetAddressOf(); }
 
+        // юс╫ц
+        ID2D1DeviceContext7* GetD2DContext() const { return m_d2dContext.Get(); }
+        IDWriteTextFormat* GetD2DTextFormat() const { return m_textFormat.Get(); }
+        ID2D1SolidColorBrush* GetTextColorBrush() const { return m_textBrush.Get(); }
     private:
 
         void CreateDeviceAndSwapChain(HWND hwnd);

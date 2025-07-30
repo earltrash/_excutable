@@ -23,6 +23,10 @@
 #include <d2d1_1.h> 
 #include <dwrite_3.h>                // DirectWrite (최신 텍스트 엔진)
 #include <wincodec.h>                // WIC (이미지 로딩)
+
+// 임시
+#include "UIUtility.h"
+#include "BitmapManager.h"
 #pragma endregion 
 
 #pragma region DX

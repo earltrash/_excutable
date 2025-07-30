@@ -51,7 +51,7 @@ void SceneStandard::Render() //UI 렌더
 	MAT3X2F renderTM = MYTM::MakeRenderMatrix(true); // 카메라 위치 렌더링 매트릭스
 	MAT3X2F finalTM = renderTM * cameraTM;
 
-	m_renderer->RenderBegin();
+	//m_renderer->RenderBegin();
 	
 	m_renderer->SetTransform(finalTM);
 	for (const auto& [Name, obj] : m_gameObjects)
@@ -63,14 +63,16 @@ void SceneStandard::Render() //UI 렌더
 		const Frame& frame = obj->GetSpriteRenderer().GetCurrentFrame();
 		const auto& srcU = frame.srcRect;
 
-		D2D1_RECT_F srcRect = D2D1::RectF(
+		D2D1_RECT_F srcRect = D2D1::RectF
+		(
 			static_cast<float>(srcU.left),
 			static_cast<float>(srcU.top),
 			static_cast<float>(srcU.right),
 			static_cast<float>(srcU.bottom)
 		);
 
-		D2D1_RECT_F destRect = {
+		D2D1_RECT_F destRect = 
+		{
 			0.f,
 			0.f,
 			static_cast<float>(srcU.right - srcU.left),
@@ -80,25 +82,26 @@ void SceneStandard::Render() //UI 렌더
 		m_renderer->SetTransform(finalTM); // Object 위치
 		m_renderer->DrawBitmap(obj->GetSpriteRenderer().GetCurrentClip().GetBitmap(), destRect, srcRect, 1);
 	}
-	m_renderer->RenderEnd();
+
+	//m_renderer->RenderEnd();
 }
+
 
 void SceneStandard::AssetMapping()
 {
-	for (auto& [name, obj] : m_gameObjects) { //map의 auto 반복문은 이런 구조...
-		for (const auto& asset : SceneAssets) {
-			if (asset.Name == name) { 
+	for (auto& [name, obj] : m_gameObjects) 
+	{ //map의 auto 반복문은 이런 구조...
+		for (const auto& asset : SceneAssets) 
+		{
+			if (asset.Name == name) 
+			{ 
 				obj->GetSpriteRenderer().AddClip(asset.Ani_Name, asset.clip);
 				if (asset.Ani_Name == "Idle") 
 					obj->GetSpriteRenderer().SetCurrentClip(&asset.clip); 
 			}
 		}
 	}
-	
-
-
 	return;
-
 }
 
 

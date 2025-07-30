@@ -149,11 +149,15 @@
     <ClInclude Include="AnimationClip.h" />
     <ClInclude Include="AsepriteParser.h" />
     <ClInclude Include="AssetProvider.h" />
+    <ClInclude Include="BitmapManager.h" />
     <ClInclude Include="CallbackType.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Dispatcher.h" />
+    <ClInclude Include="GameInventoryManager.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="IUIWindow.h" />
     <ClInclude Include="ObjFactory.h" />
     <ClInclude Include="KeyListenerComponent.h" />
     <ClInclude Include="Listener.h" />
@@ -173,11 +177,13 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TMHelper.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="UIUtility.h" />
     <ClInclude Include="UI_Standard.h" />
     <ClInclude Include="WinD.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AsepriteParser.cpp" />
+    <ClCompile Include="BitmapManager.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="ObjFactory.cpp" />
     <ClCompile Include="InputManager.cpp" />
