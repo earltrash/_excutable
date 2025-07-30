@@ -27,7 +27,7 @@ void M_Core::Init()
     assert(SUCCEEDED(hr));
 
     //etc
-
+    
     std::cout << "Init ¼º°øÀû" << std::endl; 
    
 }

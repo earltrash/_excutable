@@ -20,7 +20,8 @@ public:
 
 
 		m_Scene_map->emplace("Title", make_shared<SceneStandard>("Title", m_assetProvider, m_Renderer));
-		m_Scene_map->emplace("Stage", make_shared<SceneStandard>("Stage", m_assetProvider, m_Renderer));
+		m_Scene_map->emplace("Outgame", make_shared<SceneStandard>("Outgame", m_assetProvider, m_Renderer));
+		m_Scene_map->emplace("Ingame", make_shared<SceneStandard>("Ingame", m_assetProvider, m_Renderer));
 		m_Scene_map->emplace("End", make_shared<SceneStandard>("End", m_assetProvider, m_Renderer));
 
 		m_currentindex = "Title";
