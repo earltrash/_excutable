@@ -135,6 +135,9 @@
     <ClInclude Include="Status.h">
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="ItemGlobal.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -178,6 +181,9 @@
     </ClCompile>
     <ClCompile Include="SpriteRenderer.cpp">
       <Filter>Header Files\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemGlobal.cpp">
+      <Filter>Header Files\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

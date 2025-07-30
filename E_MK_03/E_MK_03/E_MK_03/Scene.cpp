@@ -81,8 +81,7 @@ void SceneStandard::AssetMapping()
 		for (const auto& asset : SceneAssets) {
 			if (asset.Name == name) { 
 				obj->GetSpriteRenderer().AddClip(asset.Ani_Name, asset.clip);
-				if (asset.Ani_Name == "Idle") 
-					obj->GetSpriteRenderer().SetCurrentClip(&asset.clip); 
+				if (asset.Ani_Name == "Idle") 					obj->GetSpriteRenderer().SetCurrentClip(&asset.clip); 
 			}
 		}
 	}

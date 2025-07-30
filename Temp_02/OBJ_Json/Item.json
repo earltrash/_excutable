@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "type": "Material",
+      "id": "I024",
+      "name": "영웅의 유산",
+      "description": "합성 재료. 대상 아이템과 합성할 시 파괴되며, 새로운 아이템이 생성된다.",
+      "enchantable": false,
+      "synthesizable": true,
+      "Moment": "Syn"
+    },
+    {
+      "type": "Potion",
+      "id": "I021",
+      "name": "희석된 능력의 물약",
+      "description": "플레이어가 원하는 능력치를 강화한다.",
+      "enchantable": false,
+      "synthesizable": false,
+      "much": 1,
+      "Moment": "Adv"
+
+    },
+    {
+      "type": "Enchancer",
+      "id": "I001",
+      "name": "힘의 주문서",
+      "description": "100%확률로 아이템을 강화한다.",
+      "enchantable": false,
+      "synthesizable": false,
+      "much": 2,
+      "stat": "power",
+      "Moment": "Adv"
+    },
+    {
+      "type": "Wearable",
+      "id": "W001",
+      "name": "낡은 영웅의 검",
+      "description": "엑셀 보니 무기들은 설명이 없네요..",
+      "enchantable": false,
+      "synthesizable": true,
+      "part": "Weapon",
+      "Moment": "Gen_2",
+      "stats": [
+        {
+          "stat": "power",
+          "amount": 2
+        },
+        {
+          "stat": "agile",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

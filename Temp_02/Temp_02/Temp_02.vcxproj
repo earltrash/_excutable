@@ -137,13 +137,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Enchancer.cpp" />
+    <ClCompile Include="Factory.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Material.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStatus.cpp" />
+    <ClCompile Include="Potion.cpp" />
     <ClCompile Include="Temp_02.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\User\Desktop\FrameWork_hwk\E_MK_03\E_MK_03\E_MK_03   </AdditionalIncludeDirectories>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsCpp</CompileAs>
     </ClCompile>
+    <ClCompile Include="Wearable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\E_MK_03\E_MK_03\E_MK_03\E_MK_03.vcxproj">
@@ -152,12 +158,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Enchancer.h" />
     <ClInclude Include="Flight.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemManager.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStatus.h" />
+    <ClInclude Include="Potion.h" />
+    <ClInclude Include="Wearable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

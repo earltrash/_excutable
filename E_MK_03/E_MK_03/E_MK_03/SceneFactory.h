@@ -44,6 +44,15 @@ public:
 			obj = ObjFactory::Get().CreateObject("Exit");
 			scene.m_gameObjects.emplace("Exit", std::move(obj));
 
+
+					//기존 방식이랑 다르게, Object에 있는 
+
+					//2개는 못 만드니. 해당 오브젝트의 소유권에 대해서 고민 해봐야 할 듯 
+
+					/*auto obj = ObjFactory::Get().CreateObject("Steel Armor");
+					scene.m_gameObjects.emplace("Steel Armor", std::move(obj));*/
+
+					
 				});
 
 

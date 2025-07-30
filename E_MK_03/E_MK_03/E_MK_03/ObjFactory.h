@@ -3,10 +3,12 @@
 #include "Object.h"
 #include "Scene.h"
 
+
 class ObjFactory { //¾ê´Â ±×³É 
 
     using ObjectCreator = std::function<std::unique_ptr<Object>()>;
     using SceneCreator = std::function<std::shared_ptr<SceneStandard>()>;
+
 private:
     ObjFactory() = default;
     ~ObjFactory() = default;
@@ -32,6 +34,7 @@ public:
         }
         return it->second();
     }
+
 
 public:
     std::unordered_map<std::string, ObjectCreator> m_objectCreators;
