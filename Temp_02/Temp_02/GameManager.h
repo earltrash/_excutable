@@ -2,8 +2,7 @@
 #include "pch.h"
 
 
-
 class GameManager
 {
-
+	;
 };

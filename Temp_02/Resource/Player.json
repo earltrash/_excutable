@@ -241,5 +241,5 @@
       }
     ]
   },
-  "SceneInfo": [ "Stage", "Title", "End" ]
+    "SceneInfo": [ "Title", "Outgame", "Ingame", "End" ]
 }

@@ -14,7 +14,12 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	SetConsoleOutputCP(CP_UTF8); // 콘솔 출력을 UTF-8로
+	// 로케일 설정
+	//std::locale::global(std::locale(".UTF8"));
+	//std::wcout.imbue(std::locale());
+
+	// 콘솔 출력을 UTF-8로
+	SetConsoleOutputCP(CP_UTF8); 
 
 	//예외처리 
 	ObjectRegister(); //assert로 시켜도 됨 일단 factory에 obj 등록 

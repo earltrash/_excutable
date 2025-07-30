@@ -9,13 +9,24 @@ LRESULT NzWndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 	{
 		RECT* rect = (RECT*)lparam;
 
-		const int Width = 1920;
-		const int Height = 1080;
+		RECT rc = { 0, 0, 1920, 1080 };
+		AdjustWindowRect(&rc, GetWindowLong(hwnd, GWL_STYLE), FALSE);
 
-		rect->right = rect->left + Width;
-		rect->bottom = rect->top + Height;
+		int frameWidth = rc.right - rc.left;
+		int frameHeight = rc.bottom - rc.top;
 
-		break;
+		rect->right = rect->left + frameWidth;
+		rect->bottom = rect->top + frameHeight;
+		return TRUE;
+		//RECT* rect = (RECT*)lparam;
+
+		//const int Width = 1920;
+		//const int Height = 1080;
+
+		//rect->right = rect->left + Width;
+		//rect->bottom = rect->top + Height;
+
+		//break;
 	}
 	
 

@@ -38,13 +38,17 @@ public:
 			m_sceneInitializers.emplace("Title", [](SceneStandard& scene)
 				{
 
-			auto obj = ObjFactory::Get().CreateObject("Start");
-			scene.m_gameObjects.emplace("Start", std::move(obj));
-
-			obj = ObjFactory::Get().CreateObject("Exit");
-			scene.m_gameObjects.emplace("Exit", std::move(obj));
-
-
+			auto 
+			obj = ObjFactory::Get().CreateObject("시작화면_0");
+			         scene.m_gameObjects.emplace("시작화면_0", std::move(obj));
+			obj = ObjFactory::Get().CreateObject("시작화면_1");
+			         scene.m_gameObjects.emplace("시작화면_1", std::move(obj));
+			obj = ObjFactory::Get().CreateObject("시작화면_2");
+					 scene.m_gameObjects.emplace("시작화면_2", std::move(obj));
+			obj = ObjFactory::Get().CreateObject("시작화면_3");
+					 scene.m_gameObjects.emplace("시작화면_3", std::move(obj));
+			obj = ObjFactory::Get().CreateObject("시작화면_4");
+					 scene.m_gameObjects.emplace("시작화면_4", std::move(obj));
 					//기존 방식이랑 다르게, Object에 있는 
 
 					//2개는 못 만드니. 해당 오브젝트의 소유권에 대해서 고민 해봐야 할 듯 
@@ -55,11 +59,50 @@ public:
 					
 				});
 
-
-		m_sceneInitializers.emplace("Stage", [](SceneStandard& scene) {
-			auto obj = ObjFactory::Get().CreateObject("Player");
-			scene.m_gameObjects.emplace("Player", std::move(obj));
+		m_sceneInitializers.emplace("Outgame", [](SceneStandard& scene) {
+			auto 
+				obj = ObjFactory::Get().CreateObject("시작화면_0");
+			scene.m_gameObjects.emplace("시작화면_0", std::move(obj));
+				obj = ObjFactory::Get().CreateObject("아웃게임_1");
+				         scene.m_gameObjects.emplace("아웃게임_1", std::move(obj));
+				obj = ObjFactory::Get().CreateObject("아웃게임_2");
+				         scene.m_gameObjects.emplace("아웃게임_2", std::move(obj));
+				obj = ObjFactory::Get().CreateObject("아웃게임_3");
+				         scene.m_gameObjects.emplace("아웃게임_3", std::move(obj));
+				obj = ObjFactory::Get().CreateObject("아웃게임_4");
+				         scene.m_gameObjects.emplace("아웃게임_4", std::move(obj));
+				obj = ObjFactory::Get().CreateObject("아웃게임_5");
+				         scene.m_gameObjects.emplace("아웃게임_5", std::move(obj));
 			});
+
+
+		m_sceneInitializers.emplace("Ingame", [](SceneStandard& scene) {
+			auto 
+				obj = ObjFactory::Get().CreateObject("시작화면_0");
+			scene.m_gameObjects.emplace("시작화면_0", std::move(obj));
+				obj = ObjFactory::Get().CreateObject("인게임_1");
+				         scene.m_gameObjects.emplace("인게임_1", std::move(obj));
+				obj = ObjFactory::Get().CreateObject("인게임_2");
+				         scene.m_gameObjects.emplace("인게임_2", std::move(obj));
+				obj = ObjFactory::Get().CreateObject("인게임_3");
+				         scene.m_gameObjects.emplace("인게임_3", std::move(obj));
+				obj = ObjFactory::Get().CreateObject("인게임_4");
+				         scene.m_gameObjects.emplace("인게임_4", std::move(obj));
+
+			});
+
+
+		m_sceneInitializers.emplace("End", [](SceneStandard& scene) {
+			auto
+				obj = ObjFactory::Get().CreateObject("시작화면_0");
+			scene.m_gameObjects.emplace("시작화면_0", std::move(obj));
+			
+			});
+
+		//m_sceneInitializers.emplace("Outgame", [](SceneStandard& scene) {
+		//	auto obj = ObjFactory::Get().CreateObject("Player");
+		//	scene.m_gameObjects.emplace("Player", std::move(obj));
+		//	});
 
 	}
 
